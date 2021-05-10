@@ -15,16 +15,15 @@
         <h6 class="card-header">بطاقات التهنئة بعيد الفطر</h6>
         <div class="card-body">
           <div class="mb-3">
-            <label for="TextInput" class="form-label">
+            <label for="inputName" class="form-label">
               <h6 class="card-title">الاسم</h6>              
             </label>
-            <input type="text" class="form-control" id="TextInput" placeholder="اكتب اسمك هنا
-            ">
+            <input type="text" class="form-control" id="inputName" placeholder="اكتب اسمك هنا">
           </div>
           <h6 class="card-title">اختر البطاقة</h6>              
           <div class="row">
-            <div class="col text-center"><img src="images/thumbnail1.jpg" class="rounded" alt="Thumbnail 1"></div>
-            <div class="col text-center"><img src="images/thumbnail2.jpg" class="rounded" alt="Thumbnail 2"></div>
+            <div class="col text-center"><img id="thumbCard1" src="images/thumbnail1.jpg" class="rounded" alt="Thumbnail 1"></div>
+            <div class="col text-center"><img id="thumbCard2" src="images/thumbnail2.jpg" class="rounded" alt="Thumbnail 2"></div>
           </div>    
         </div>
       </div>
@@ -48,14 +47,14 @@
       </div> -->
 
       <div class="DownloadButton text-center">
-        <button type="submit" class="btn btn-primary">حفظ البطاقة</button>
+        <button type="submit" class="btn btn-primary" id="downloadImg">حفظ البطاقة</button>
       </div>
     </form>
 
 
     <div class="imgContainer">
       <div class="eidCard" id="result">
-        <img src="images/card1.jpg" class="img-fluid" alt="My Eid Card">
+        <img id="prevImg" src="images/empty.png" class="img-fluid" alt="My Eid Card">
       </div>
     </div>
   </div>
