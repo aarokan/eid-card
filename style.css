@@ -1,7 +1,42 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 .DownloadButton {
   margin-top: 15px;
 }
 
 .imgContainer {
   margin-top: 15px;
+}
+
+#result {
+  position: relative;
+  width: 100%;
+  border: 2px solid #ddd;
+  margin-bottom: 15px;
+}
+
+p {
+  font-family: 'AlArabiyaRegular';
+  font-weight: normal;
+  font-style: normal;
+}
+
+.dark-grey {
+  color: #333444;
+}
+
+footer {
+  text-align: left;
+  dir: LTR;
+  width: 100%;
+  padding-left: 30px;
+  background-image: linear-gradient(to bottom, #ffffff , #cccccc);
+}
+
+#copyright {
+  margin-bottom: 0;
+  direction: LTR;
 }
