@@ -35,6 +35,10 @@ function prevCard1() {
   };
 
   imgObj.src = "images/card1.jpg";
+
+  // enable the download button
+  const downloadBtn = document.getElementById("downloadImg");
+  downloadBtn.disabled = false;
 }
 
 
@@ -68,6 +72,10 @@ function prevCard2() {
   };
   
   imgObj.src = "images/card2.jpg";
+
+  // enable the download button
+  const downloadBtn = document.getElementById("downloadImg");
+  downloadBtn.disabled = false;
 }
 
 
