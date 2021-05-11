@@ -20,11 +20,16 @@ header {
   /* max-height: 80px; */
 }
 
-.DownloadButton {
+.imgContainer {
   margin-top: 15px;
 }
 
-.imgContainer {
+#thumbCard1:hover, #thumbCard2:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.DownloadButton {
   margin-top: 15px;
 }
 
