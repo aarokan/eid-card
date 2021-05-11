@@ -8,7 +8,6 @@ thumbCard2.addEventListener("click", prevCard2);
 function prevCard1() {
   // get the name from the input
   const inputName = document.getElementById("inputName").value;
-  console.log(inputName);
 
   const canvas = document.getElementById("result");
   canvas.height = canvas.width;
@@ -16,6 +15,9 @@ function prevCard1() {
 
   // preview the image using the canvas
   let imgObj = new Image();
+  /* set crossOrigin because src is from different 
+  origin, then the canvas is deemed as being tainted */
+  imgObj.crossOrigin = "anonymous";
   // wait for the Image to load
   imgObj.onload = function() {
     let w = canvas.width;
@@ -39,7 +41,6 @@ function prevCard1() {
 function prevCard2() {
   // get the name from the input
   const inputName = document.getElementById("inputName").value;
-  console.log(inputName);
 
   const canvas = document.getElementById("result");
   canvas.height = canvas.width;
@@ -47,6 +48,9 @@ function prevCard2() {
 
   // preview the image using the canvas
   let imgObj = new Image();
+  /* set crossOrigin because src is from different 
+  origin, then the canvas is deemed as being tainted */
+  imgObj.crossOrigin = "anonymous";
   // wait for the Image to load
   imgObj.onload = function() {
     let w = canvas.width;
@@ -62,9 +66,28 @@ function prevCard2() {
     ctx.textAlign = "center";
     ctx.fillText(inputName, (nw/1.55), (nh/1.23));
   };
-
+  
   imgObj.src = "images/card2.jpg";
 }
 
 
+// download the image by the button
 const downloadImg = document.getElementById("downloadImg");
+downloadImg.addEventListener("click", function(e) {
+  // e.preventDefault();
+  const canvas = document.getElementById("result");
+  
+  // IE support - msSaveBlob method is exclusive to IE/Edge
+  if  (window.navigator.msSaveBlob) {
+    window.navigator.msSaveBlob(canvas.msToBlob(), "EidCard.png");
+  } else {
+    // Chrome/Firefox..etc support
+    const a = document.createElement("a");
+    document.body.appendChild(a);
+    a.href = canvas.toDataURL();
+    a.download = "EidCard.png";
+    a.click();
+    document.body.removeChild(a);
+  }
+
+});
