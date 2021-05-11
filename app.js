@@ -82,7 +82,7 @@ function prevCard2() {
 // download the image by the button
 const downloadImg = document.getElementById("downloadImg");
 downloadImg.addEventListener("click", function(e) {
-  // e.preventDefault();
+  e.preventDefault();
   const canvas = document.getElementById("result");
   
   // IE support - msSaveBlob method is exclusive to IE/Edge
