@@ -9,10 +9,6 @@ function prevCard1() {
   // get the name from the input
   const inputName = document.getElementById("inputName").value;
 
-  const canvas = document.getElementById("result");
-  canvas.height = canvas.width;
-  const ctx = canvas.getContext("2d");
-
   // preview the image using the canvas
   let imgObj = new Image();
   /* set crossOrigin because src is from different 
@@ -20,16 +16,22 @@ function prevCard1() {
   imgObj.crossOrigin = "anonymous";
   // wait for the Image to load
   imgObj.onload = function() {
+    const canvas = document.getElementById("result");
+    canvas.height = 800;//canvas.width;
+    canvas.width = 800;
+    const ctx = canvas.getContext("2d");
+
     let w = canvas.width;
-    let nw = imgObj.naturalWidth;
-    let nh = imgObj.naturalHeight;
+    let nw = w;//imgObj.naturalWidth;
+    let nh = canvas.height;//imgObj.naturalHeight;
     let aspect = nw / nh;
     let h = w /aspect;
     canvas.height = h;
+
     ctx.drawImage(imgObj, 0, 0, w, h);
 
     ctx.fillStyle = "#fff";
-    ctx.font = "250px AlArabiyaRegular";
+    ctx.font = "40px AlArabiyaRegular";
     ctx.textAlign = "center";
     ctx.fillText(inputName, (nw/2), (nh/1.3));
   };
@@ -46,10 +48,6 @@ function prevCard2() {
   // get the name from the input
   const inputName = document.getElementById("inputName").value;
 
-  const canvas = document.getElementById("result");
-  canvas.height = canvas.width;
-  const ctx = canvas.getContext("2d");
-
   // preview the image using the canvas
   let imgObj = new Image();
   /* set crossOrigin because src is from different 
@@ -57,18 +55,24 @@ function prevCard2() {
   imgObj.crossOrigin = "anonymous";
   // wait for the Image to load
   imgObj.onload = function() {
+    const canvas = document.getElementById("result");
+    canvas.height = 800;//canvas.width;
+    canvas.width = 800;
+    const ctx = canvas.getContext("2d");
+
     let w = canvas.width;
-    let nw = imgObj.naturalWidth;
-    let nh = imgObj.naturalHeight;
+    let nw = w;//imgObj.naturalWidth;
+    let nh = canvas.height;//imgObj.naturalHeight;
     let aspect = nw / nh;
     let h = canvas.width /aspect;
     canvas.height = h;
     ctx.drawImage(imgObj, 0, 0, w, h);
 
     ctx.fillStyle = "#a50d12";
-    ctx.font = "250px AlArabiyaRegular";
+    ctx.font = "40px AlArabiyaRegular";
     ctx.textAlign = "center";
     ctx.fillText(inputName, (nw/1.55), (nh/1.23));
+    //ctx.fillText(inputName, 100, 150);
   };
   
   imgObj.src = "images/card2.jpg";
@@ -91,11 +95,26 @@ downloadImg.addEventListener("click", function(e) {
   } else {
     // Chrome/Firefox..etc support
     const a = document.createElement("a");
-    document.body.appendChild(a);
+    if (canvas.toBlob) {
+      canvas.toBlob(function (blob) {
+        //alert(blob);
+        // Do something with the blob object,
+        // e.g. create multipart form data for file uploads:
+        const a = document.createElement("a");
+        saveAs(blob, "EidCard.jpg");
+        //var formData = new FormData()
+        //formData.append('file', blob, 'image.jpg');
+        //document.body.removeChild(a);
+        // ...
+      }, 'image/jpeg')
+    } else {
+      alert(2);
+    }
+    /*document.body.appendChild(a);
     a.href = canvas.toDataURL();
     a.download = "EidCard.png";
     a.click();
-    document.body.removeChild(a);
+    document.body.removeChild(a);*/
   }
 
 });
